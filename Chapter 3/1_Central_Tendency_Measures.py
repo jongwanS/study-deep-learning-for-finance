@@ -6,6 +6,7 @@ start_date = '1950-01-01'
 end_date   = '2023-01-23'
 
 # Creating a dataframe and downloading the CPI data
+# CPIAUCSL은 FRED에서 정의한 시계열 ID
 cpi = pdr.DataReader('CPIAUCSL', 'fred', start_date, end_date)
 
 # Printing the latest five observations of the dataframe
@@ -18,12 +19,17 @@ count_nan = cpi['CPIAUCSL'].isnull().sum()
 print('Number of nan values in the CPI dataframe: ' + str(count_nan))
 
 # Transforming the CPI into a year-on-year measure
+# CPI를 연도 대비 변화율(%)로 변환
+# pct_change(periods=12)는 1년 전 대비 몇 % 상승했는지를 계산
 cpi = cpi.pct_change(periods = 12, axis = 0) * 100
 
 # Dropping the nan values from the rows
+# nan 값 제거
 cpi = cpi.dropna()
 
 # Calculating the mean of the CPI over the last 20 years
+# 최근 240개월(20년) 데이터만 추출해서 평균 계산
+# 2003 - 2023
 cpi_latest = cpi.iloc[-240:]
 mean = cpi_latest["CPIAUCSL"].mean()
 
@@ -70,6 +76,7 @@ plt.grid()
 # Calling the legend function so it appears with the chart
 plt.legend()
 
+input("Press Enter to exit")  # 종료 전 입력 대기
 
 
 

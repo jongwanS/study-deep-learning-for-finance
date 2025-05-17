@@ -27,18 +27,22 @@ cpi = cpi.dropna()
 cpi_latest = cpi.iloc[-240:]
 
 # Calculating the variance of the dataset
+# 분산 variance 값 계산
 variance = cpi_latest["CPIAUCSL"].var() 
 
 # Printing the result
 print('The variance of the dataset: ' + str(variance), '%')
 
 # Calculating the standard deviation of the dataset
+# 표준편차
 standard_deviation = cpi_latest["CPIAUCSL"].std() 
 
 # Printing the result
+# 표준편차
 print('The standard deviation of the dataset: ' + str(standard_deviation), '%')
 
 # Calculating the range of the dataset
+# 범위
 range_metric = max(cpi["CPIAUCSL"]) - min(cpi["CPIAUCSL"])
 
 # Printing the result
