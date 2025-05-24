@@ -128,7 +128,8 @@ plt.close()
 # Creating the chart
 cpi_latest = cpi.iloc[-240:]
 fig, ax = plt.subplots()
-ax.boxplot(cpi_latest['CPIAUCSL'])
+#ax.boxplot(cpi_latest['CPIAUCSL'])
+ax.boxplot(cpi_latest['CPIAUCSL'], showfliers = False)
 
 # Calling the grid function for better interpretability
 plt.grid()
@@ -140,4 +141,4 @@ plt.legend()
 plt.show()
 
 # Removing outliers
-ax.boxplot(cpi_latest['CPIAUCSL'], showfliers = False)
+# ax.boxplot(cpi_latest['CPIAUCSL'], showfliers = False)

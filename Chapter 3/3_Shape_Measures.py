@@ -63,7 +63,7 @@ print('The skew of the dataset: ' + str(skew))
 
 # Plotting the histogram of the data
 fig, ax = plt.subplots()
-ax.hist(cpi_latest['CPIAUCSL'], bins = 30, edgecolor = 'black', color = 'white')
+ax.hist(cpi_latest['CPIAUCSL'], bins = 30, edgecolor = 'black', color = 'white') #이상치 제거 안할 시
 
 # Add vertical lines for better interpretation
 ax.axvline(mean, color='black', linestyle='--', label='Mean', linewidth = 2)
