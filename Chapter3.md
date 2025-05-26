@@ -1,3 +1,5 @@
+
+
 ## Chapter 3. Descriptive Statistics and Data Analysis (기술통계와 데이터 분석)
 - `Descriptive statistics`(기술 통계)
   - 데이터를 설명하고, 그로부터 가능한 한 많은 정보를 추출하는 분야
@@ -315,3 +317,10 @@
 ### Correlation
 
 ### The Concept of Stationarity
+
+### Regression Analysis and Statistical Inference
+
+### Summary
+
+
+p 220 - 236 까지
