@@ -2,12 +2,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.dummy import DummyRegressor
-from master_function import data_preprocessing, mass_import
+from master_function import data_preprocessing, import_crypto
 from master_function import plot_train_test_values, calculate_accuracy, model_bias
 from sklearn.metrics import mean_squared_error
 
 # importing the time series
-data = np.diff(mass_import(0, 'D1')[:, 3])
+data = np.diff(import_crypto('BTCUSDT', interval='1h')[:, 3])
 
 # Setting the hyperparameters
 num_lags = 500
