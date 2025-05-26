@@ -10,7 +10,7 @@ from sklearn.metrics import mean_squared_error
 data = np.diff(import_crypto('BTCUSDT', interval='1h')[:, 3])
 
 # Setting the hyperparameters
-num_lags = 500
+num_lags = 300
 train_test_split = 0.80
 
 # Creating the training and test sets
@@ -27,7 +27,7 @@ y_predicted_train = np.reshape(model.predict(x_train), (-1, 1))
 y_predicted = np.reshape(model.predict(x_test), (-1, 1))
 
 # plotting
-plot_train_test_values(100, 50, y_train, y_test, y_predicted)
+plot_train_test_values(100, 60, y_train, y_test, y_predicted)
 
 # Performance evaluation
 print('---')

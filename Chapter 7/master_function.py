@@ -207,7 +207,11 @@ def calculate_accuracy(predicted_returns, real_returns):
 def model_bias(predicted_returns):
     bullish_forecasts = np.sum(predicted_returns > 0)
     bearish_forecasts = np.sum(predicted_returns < 0)
-    
+
+    if bearish_forecasts == 0:
+        # 경우에 따라 다르게 처리할 수 있음
+        return 0
+
     return bullish_forecasts / bearish_forecasts
 
 def calculate_directional_accuracy(predicted_returns, real_returns):
