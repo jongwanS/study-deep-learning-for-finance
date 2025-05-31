@@ -10,6 +10,12 @@ from sklearn.metrics import mean_squared_error
 # Import the data (write the code in one line)
 data = np.array(pd.read_excel('Daily_EURUSD_Historical_Data.xlsx')['<CLOSE>'])
 # Difference the data and make it stationary
+'''
+#### diff 함수
+diff[0] = data[1] - data[0]
+diff[1] = data[2] - data[1]
+diff[2] = data[3] - data[2]
+'''
 data = np.diff(data)
 
 # Setting the hyperparameters
@@ -28,6 +34,9 @@ model = DummyRegressor(strategy = 'mean')
 model.fit(x_train, y_train)
 
 # Predicting in-sample
+'''
+-1는, 열은 1개로 고정
+'''
 y_predicted_train = np.reshape(model.predict(x_train), (-1, 1))
 
 # Predicting out-of-sample

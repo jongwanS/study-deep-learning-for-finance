@@ -82,6 +82,7 @@ def data_preprocessing(data, num_lags, train_test_split):
     x = np.array(x)
     y = np.array(y)
     # Split the data into training and testing sets
+    # train_test_split 가 0.8, 전체 데이터 중 80%는 학습(training)에, 나머지 20%는 테스트(test)에 사용
     split_index = int(train_test_split * len(x))
     x_train = x[:split_index]
     y_train = y[:split_index]
