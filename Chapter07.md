@@ -67,8 +67,8 @@ master_function.py
      또한, 비교를 위해 학습 데이터에 대해서도 예측을 수행한다.
   5. 결과를 그래프로 나타내고 평가한다. 
 
+- ![img.png](images/img_30.png)
 
-p224~226 : mac 에서는 실행이 되지 않는다..
 
 - 더미 회귀(dummy regression)는 다음 전략 중 하나를 인자로 받을 수 있다
   - `mean (평균)`
@@ -173,6 +173,7 @@ p224~226 : mac 에서는 실행이 되지 않는다..
 
 - EUR-USD 모델 결과
   - ![img.png](images/img_29.png)
+  - ![img.png](images/img_31.png)
   - **모델 편향(bias)이 0.0**이라는 것은, 이 모델이 `더미 회귀 모델(dummy regression model)`임을 뜻함
   - 여기서 편향(bias)이 0.0이라는 뜻은, 모델의 예측값이 **모두 하락(bearish) 방향임을 의미**
 
@@ -190,3 +191,25 @@ p224~226 : mac 에서는 실행이 되지 않는다..
 >   - 학습한 모델이 **x_test**를 바탕으로 예측을 수행하는 과정
 > - **알고리즘의 주요 목표**
 >   - **높은 정확도(accuracy)** && **안정적이고 변동성이 낮은 수익률**을 달성
+
+## Machine Learning Models
+
+### Linear Regression
+
+### Support Vector Regression
+
+### Stochastic Gradient Descent Regression
+
+### Nearest Neighbors Regression
+
+### Decision Tree Regression
+
+### Random Forest Regression
+
+### AdaBoost Regression
+
+### XGBoost Regression
+
+## Overfitting and Underfitting
+
+## Summary
