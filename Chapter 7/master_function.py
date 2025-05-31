@@ -29,7 +29,7 @@ now = datetime.datetime.now()
 
 assets = ['EURUSD', 'USDCHF', 'GBPUSD', 'USDCAD', 'AUDUSD', 'NZDUSD', 'EURGBP', 'EURCHF', 'EURCAD', 'EURAUD']
 
-"""
+''' 
 def get_quotes(time_frame, year = 2005, month = 1, day = 1, asset = "EURUSD"):    
     if not mt5.initialize(): 
         print("initialize() failed, error code =", mt5.last_error()) 
@@ -41,7 +41,8 @@ def get_quotes(time_frame, year = 2005, month = 1, day = 1, asset = "EURUSD"):
     rates_frame = pd.DataFrame(rates)
     
     return rates_frame    
-
+'''
+'''
 def mass_import(asset, time_frame):
     if time_frame == 'M15':
         data = get_quotes(mt5.TIMEFRAME_M15, 2023, 6, 1, asset = assets[asset])
@@ -69,9 +70,7 @@ def mass_import(asset, time_frame):
         data = data.round(decimals = 5)             
     
     return data 
-"""
-
-
+'''
 def data_preprocessing(data, num_lags, train_test_split):
     # Prepare the data for training
     x = []
@@ -207,11 +206,8 @@ def calculate_accuracy(predicted_returns, real_returns):
 def model_bias(predicted_returns):
     bullish_forecasts = np.sum(predicted_returns > 0)
     bearish_forecasts = np.sum(predicted_returns < 0)
-
     if bearish_forecasts == 0:
-        # 경우에 따라 다르게 처리할 수 있음
         return 0
-
     return bullish_forecasts / bearish_forecasts
 
 def calculate_directional_accuracy(predicted_returns, real_returns):
@@ -241,7 +237,7 @@ def import_crypto(symbol, interval = '1h'):
     data = json.loads(requests.get(link).text)
     # Converting the text data to dataframe
     data = np.array(data)
-    data = data.astype(float)
+    data = data.astype(np.float)
     data = data[:, 1:5]
     
     return data

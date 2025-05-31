@@ -2,16 +2,23 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.dummy import DummyRegressor
-from master_function import data_preprocessing, import_crypto
+from master_function import data_preprocessing
 from master_function import plot_train_test_values, calculate_accuracy, model_bias
 from sklearn.metrics import mean_squared_error
 
 # importing the time series
-data = np.diff(import_crypto('BTCUSDT', interval='1h')[:, 3])
+# Import the data (write the code in one line)
+data = np.array(pd.read_excel('Daily_EURUSD_Historical_Data.xlsx')['<CLOSE>'])
+# Difference the data and make it stationary
+data = np.diff(data)
 
 # Setting the hyperparameters
-num_lags = 300
-train_test_split = 0.80
+'''
+하이퍼파라미터(hyperparameter) 는 모델 학습 전에 직접 설정해야 하는 값
+> 모델이 어떻게 학습할지 조절하는 외부 변수
+'''
+num_lags = 500 # 과거 500개 데이터를 입력으로 사용해서 예측하겠다는 의미
+train_test_split = 0.80 #전체 데이터 중 80%는 학습(training)에, 나머지 20%는 테스트(test)에 사용
 
 # Creating the training and test sets
 x_train, y_train, x_test, y_test = data_preprocessing(data, num_lags, train_test_split)
@@ -27,7 +34,7 @@ y_predicted_train = np.reshape(model.predict(x_train), (-1, 1))
 y_predicted = np.reshape(model.predict(x_test), (-1, 1))
 
 # plotting
-plot_train_test_values(100, 60, y_train, y_test, y_predicted)
+plot_train_test_values(100, 50, y_train, y_test, y_predicted)
 
 # Performance evaluation
 print('---')
