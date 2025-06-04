@@ -42,6 +42,44 @@ def get_quotes(time_frame, year = 2005, month = 1, day = 1, asset = "EURUSD"):
     
     return rates_frame    
 '''
+
+
+def get_quotes(time_frame, year=2005, month=1, day=1, asset="EURUSD"):
+    file_path = f"Daily_{asset}_Historical_Data.xlsx"  # 예: data/EURUSD_D1.xlsx
+    #Daily_EURUSD_Historical_Data.xlsx
+    try:
+        df = pd.read_excel(file_path)
+    except FileNotFoundError:
+        raise ValueError(f"데이터 파일이 없습니다: {file_path}")
+
+    # 날짜 필터링 (time 컬럼 기준)
+    df['<DATE>'] = pd.to_datetime(df['<DATE>'])
+    df = df[df['<DATE>'] >= pd.Timestamp(year=year, month=month, day=day)]
+
+    return df
+
+def mass_import(asset, time_frame):
+    asset_name = assets[asset]
+
+    if time_frame == 'M15':
+        data = get_quotes('M15', 2023, 6, 1, asset=asset_name)
+    elif time_frame == 'M30':
+        data = get_quotes('M30', 2023, 6, 1, asset=asset_name)
+    elif time_frame == 'H1':
+        data = get_quotes('H1', 2015, 1, 1, asset=asset_name)
+    elif time_frame == 'D1':
+        data = get_quotes('D1', 2003, 1, 1, asset=asset_name)
+    elif time_frame == 'W1':
+        data = get_quotes('W1', 2002, 1, 1, asset=asset_name)
+    elif time_frame == 'M1':
+        data = get_quotes('MN1', 2000, 1, 1, asset=asset_name)
+    else:
+        raise ValueError(f"Unsupported time frame: {time_frame}")
+
+    # OHLC 열 추출 (1:5 열) → open, high, low, close
+    data = data.iloc[:, 1:5].values
+    data = data.round(decimals=5)
+    return data
 '''
 def mass_import(asset, time_frame):
     if time_frame == 'M15':
