@@ -385,6 +385,8 @@ Model Bias =  0.94
      - 일부 변수의 계수를 0으로 만들어버려서, 그 **변수는 모델에서 사실상 제외**
 
 #### toDO 240p 부터 시작
+- **자기회귀 모델(autoregressive model)**
+  - `종속 변수`(예측하려는 값)가 외부 데이터(exogenous data)가 아니라, `자신의 과거 값들에 의존해서 예측`
 
 ### Support Vector Regression
 
