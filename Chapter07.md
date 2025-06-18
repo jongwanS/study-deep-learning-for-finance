@@ -664,7 +664,7 @@ Model Bias = 1.02
 3. 노이즈와 이상치에 민감
 - 모든 이웃을 동등하게 고려하므로, **이상치(outlier)가 포함될 경우 예측에 악영향**을 줄 수 있음.
 
-### Decision Tree Regression
+### Decision Tree Regression(결정 트리 회귀)
 
 ### Random Forest Regression
 
