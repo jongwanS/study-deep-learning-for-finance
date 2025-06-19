@@ -703,6 +703,31 @@ else:
 3. 노이즈와 이상치에 민감
 - 모든 이웃을 동등하게 고려하므로, **이상치(outlier)가 포함될 경우 예측에 악영향**을 줄 수 있음.
 
+
+---
+### KNN 실습
+#### 🧠 결과적으로 보여주는 것
+🔵 파란 점: 실제 관측된 데이터(훈련 데이터)들
+🔴 빨간 선: 빨간색 선 (KNN Prediction, k=2), k-NN 회귀 모델이 예측한 값들
+
+````python
+  for x in X_test:
+      # 거리 계산 (유클리디안 거리)
+      # 유클리디안 거리 = 절대값
+      distances = np.abs(self.X_train - x)
+
+      # 가까운 K개 인덱스
+      #argsort()[:k]
+      k_indices = distances.argsort()[:self.k]
+
+      # K개의 타깃 평균
+      k_avg = np.mean(self.y_train[k_indices])
+      predictions.append(k_avg)
+
+````
+
+- ![img.png](images/ch07/img_43.png)
+
 ### Decision Tree Regression(결정 트리 회귀)
 
 ### Random Forest Regression
