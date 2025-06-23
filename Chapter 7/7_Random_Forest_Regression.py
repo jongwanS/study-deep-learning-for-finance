@@ -17,7 +17,7 @@ train_test_split = 0.80
 x_train, y_train, x_test, y_test = data_preprocessing(data, num_lags, train_test_split)
 
 # Fitting the model
-model = RandomForestRegressor(max_depth = 20, random_state = 123)
+model = RandomForestRegressor(max_depth = 3, random_state = 123)
 model.fit(x_train, y_train)
 
 # Predicting in-sample
