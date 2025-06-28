@@ -19,8 +19,8 @@ class DecisionTreeRegressor:
         best_idx = None
         best_val = None
 
-        for feature_index in range(X.shape[1]):
-            values = np.unique(X[:, feature_index])
+        for feature_index in range(X.shape[1]): #X.shape[1] 열(column)의 개수
+            values = np.unique(X[:, feature_index]) ## 0번째 열의 유일값 print(np.unique(X[:, 0]))
             for val in values:
                 left_idx = X[:, feature_index] <= val
                 right_idx = X[:, feature_index] > val
