@@ -881,6 +881,7 @@ else:
 #### 실습
 ````python
 ````
+- ![img.png](images/ch07/img.png)
 
 ### XGBoost Regression
 #### ✅ XGBoost 회귀
