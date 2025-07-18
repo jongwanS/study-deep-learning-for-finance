@@ -32,3 +32,21 @@
   - `작업 시간`: 2x + y ≤ 100시간
   - `자재`: x + 2y ≤ 80kg
   - 비음수 조건: x ≥ 0, y ≥ 0
+
+#### 🎯 딥러닝에서 최소화 문제란?
+- 딥러닝에서 우리가 최적화하려는 대상은 대부분 **손실 함수(loss function)**
+
+#### ✅ 해결 방법: Gradient Descent
+1. 경사 하강법 (Gradient Descent)
+   - `손실 함수`의 **기울기**(gradient)를 계산해서, 현재 위치에서 손실을 가장 빠르게 줄일 수 있는 방향으로 **파라미터를 업데이트**
+   - **매 스텝마다 기울기 방향으로 이동하면서 손실을 줄여나감**
+- ![img.png](images/lp_programming/img.png)
+- ![img.png](images/lp_programming/img_1.png)
+2. 역전파 (Backpropagation)
+- ![img.png](images/lp_programming/img_2.png)
+  - 입력 계층 (Input Layer): X1, X2 두 개의 입력 노드(0.50과 0.10의 초기 값)
+  - 은닉 계층 (Hidden Layer): H1, H2, H3 세 개의 은닉 노드
+  - 출력 계층 (Output Layer): Y라는 하나의 출력 노드
+#### 💡 수십억 차원도 가능한 이유는?
+- CPU나 GPU에서 벡터/행렬 연산이 빠르게 돌아가도록 최적화
+- 전체 손실 함수에서 중요한 정보만을 쏙쏙 뽑아내는 `확률적 경사하강법(SGD, mini-batch)` 같은 방식을 사용
