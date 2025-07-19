@@ -6,8 +6,8 @@ def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
 def sigmoid_derivative(x):
-    s = sigmoid(x)
-    return s * (1 - s)
+    s = sigmoid(x)  # 먼저 sigmoid(x) 값을 계산
+    return s * (1 - s)  # 그 값을 이용하여 미분 계산
 
 # 예시 입력, 가중치 초기화
 X = np.array([0.5, 0.1])     # 입력층 2개
