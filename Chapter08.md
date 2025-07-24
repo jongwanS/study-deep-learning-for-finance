@@ -255,4 +255,50 @@
 
 
 #### Multilayer Perceptrons, MLP (다층 퍼셉트론)
+- `퍼셉트론의 구성 요소 및 작동 방식`
+  - ![img.png](images/ch08/img_13.png)
+    - **입력 (Inputs)** : 퍼셉트론이 받아들이는 여러 개의 정보 또는 데이터
+    - **가중치 (Weights)** : 각 입력값에 곱해지는 중요도 또는 영향력을 나타내는 값
+    - **가중 합 (Weighted Sum)** : 각 입력값(x)과 해당 가중치(w)를 곱한 값들을 모두 더한 것
+    - **활성화 함수 (Activation Function)** : 가중 합의 결과를 받아 최종 출력을 결정하는 함수
+    - **출력 (Output)** : 활성화 함수를 거쳐 나온 퍼셉트론의 최종 결과값
+- `퍼셉트론`
+  - **단일 계층 신경망**
+  - **가장 기본적인 형태의 의사결정 단위**
 
+- `다층 퍼셉트론(MLP)`
+  - 여러 계층의 인공 뉴런, 즉 **노드로 구성된 인공 신경망(ANN)의 한 종류**
+  - `MLP`는 **피드포워드 신경망** - 정보가 네트워크를 통해 `한 방향으로만 흐른다는 것을 의미`
+  - `MLP`는 **역전파(backpropagation) 알고리즘을 사용**하여 훈련
+    - `역전파`는 예측된 출력과 원하는 출력 사이의 차이(오차)를 최소화하기 위해 네트워크 내 **뉴런들의 가중치(weights)를 조정**
+  - `MLP`는 **비선형적인 관계를 학습하는 능력이 뛰어남**
+  - ![img.png](images/ch08/img_14.png)
+    - `1-2-3-4 한번의 반복`이 **1 epoch** 이다. => **오차가 줄어들때까지 진행**
+
+````python
+'''
+은닉층 1: 20개 뉴런, ReLU
+은닉층 2: 20개 뉴런, ReLU
+출력층: 1개 뉴런 (다음 시점 수익률 예측)
+'''
+model = Sequential()
+
+# 은닉층1
+model.add(Dense(num_neurons_in_hidden_layers, input_dim = num_lags, activation = 'relu'))  
+# 은닉층2
+model.add(Dense(num_neurons_in_hidden_layers, activation = 'relu')) 
+
+#출력층 1개
+model.add(Dense(1))
+'''
+손실 함수: 평균 제곱 오차(MSE)
+최적화 기법: Adam
+'''
+model.compile(loss = 'mean_squared_error', optimizer = 'adam')
+````
+- 모델 결과
+  - ![img.png](images/ch08/img_15.png)
+- 하이퍼파라미터가 민감하게 결과에 영향을 준다.
+- 특징 선택, 모델 구조, 정규화, 앙상블 등 다양한 방법을 통해 모델 성능을 개선해야 한다.
+- 훈련 중에는 손실 값이 점점 감소해야 학습이 잘 되고 있다는 신호이다.
+  - ![img.png](images/ch08/img_16.png)
