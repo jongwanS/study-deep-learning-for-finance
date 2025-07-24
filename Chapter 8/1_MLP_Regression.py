@@ -14,9 +14,15 @@ start_date = '1990-01-01'
 end_date   = '2023-06-01'
 
 # Fetch S&P 500 price data
+# S&P500 데이터를 다운로드
 data = np.array((pdr.get_data_fred('SP500', start = start_date, end = end_date)).dropna())
 
 # Difference the data and make it stationary
+'''
+x = [100, 102, 105, 103]
+np.diff(x)  # → [2, 3, -2]
+=> S&P 500의 종가를 하루 단위로 차분해서,하루하루 수익률 변화 (혹은 가격 변화량) 을 구하는 것
+'''
 data = np.diff(data[:, 0])
 
 # Setting the hyperparameters
@@ -30,9 +36,15 @@ batch_size = 16
 x_train, y_train, x_test, y_test = data_preprocessing(data, num_lags, train_test_split)
 
 # Designing the architecture of the model
+# MLP 모델 구축
 model = Sequential()
 
 # First hidden layer
+'''
+은닉층 1: 20개 뉴런, ReLU
+은닉층 2: 20개 뉴런, ReLU
+출력층: 1개 뉴런 (다음 시점 수익률 예측)
+'''
 model.add(Dense(num_neurons_in_hidden_layers, input_dim = num_lags, activation = 'relu'))  
 
 # Second hidden layer
@@ -42,6 +54,10 @@ model.add(Dense(num_neurons_in_hidden_layers, activation = 'relu'))
 model.add(Dense(1))
 
 # Compiling
+'''
+손실 함수: 평균 제곱 오차(MSE)
+최적화 기법: Adam
+'''
 model.compile(loss = 'mean_squared_error', optimizer = 'adam')
 
 # Fitting the model
