@@ -302,3 +302,9 @@ model.compile(loss = 'mean_squared_error', optimizer = 'adam')
 - 특징 선택, 모델 구조, 정규화, 앙상블 등 다양한 방법을 통해 모델 성능을 개선해야 한다.
 - 훈련 중에는 손실 값이 점점 감소해야 학습이 잘 되고 있다는 신호이다.
   - ![img.png](images/ch08/img_16.png)
+
+#### Recurrent Neural Networks
+
+#### Long Short-Term Memory
+
+#### Temporal Convolutional Neural Networks
