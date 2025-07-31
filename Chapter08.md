@@ -308,6 +308,19 @@ model.compile(loss = 'mean_squared_error', optimizer = 'adam')
   - ![img.png](images/ch08/img_16.png)
 
 #### Recurrent Neural Networks
+- RNN(Recurrent Neural Network, 재귀 신경망)
+  - `순차적인 데이터` 또는 `시간에 따라 변하는 데이터(시계열 데이터)`를 처리하도록 설계된 **신경망의 한 종류**
+  - 일반적인 신경망은 입력에서 출력(피드포워딩)으로 한 번만 처리하지만, **RNN**은 `이전의 정보를 기억하면서 다음 입력을 처리`
+  - RNN의 핵심 특징은 **순환 연결(recurrent connections)**
+    - RNN은 자신의 출력을 다음 입력에 연결하는 루프 구조를 가지고 있어서, **이전 정보를 기억하고 반영하며 데이터를 처리**할 수 있다.
+  - RNN은 `이전 입력의 맥락(context)`을 **기억**해서 시계열 데이터나 문장처럼 **순서가 중요한 데이터를 잘 처리**
+      - 네트워크 안에 **루프(loop)**를 만들며, 이 루프를 통해 시간이 흐름에 따라 정보를 기억하고 유지할 수 있게
+
+
+- many to many (언어 trnaslation 등등 사용
+- many to one
+- one to many(챗봇 등등)
+  - q&a
 
 #### Long Short-Term Memory
 
