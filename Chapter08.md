@@ -399,6 +399,8 @@ model.compile(loss = 'mean_squared_error', optimizer = 'adam')
 3. 음악 생성 / 오디오 분석
  - 이전 음표의 흐름을 기억하고, 다음 음을 생성
 
+---
+##### LSTM 3차원배열구조
 - **LSTM**의 **게이팅 메커니즘(gating mechanisms)** 으로 `네트워크`는 **중요한 정보를 선택적으로 기억하거나 잊을 수 있다**
 
 - **🧩 LSTM 입력 데이터의 3차원 배열 구조**
