@@ -432,6 +432,8 @@ model.compile(loss = 'mean_squared_error', optimizer = 'adam')
   - 공간적/지역적 정보 손실
     - **일반적인 DNN**은 데이터를 한 줄로 길게 늘어뜨린 `1차원 배열 형태`로만 받아들임.
     - 이 과정에서 픽셀들이 서로 가까이 있었던 **위치 정보(공간적/지역적 정보)가 완전히 사라짐**
+      ![img.png](images/ch08/img_31.png) 
+      - 1번은 2번 및 4번과 밀접한 관련이 있지만 공간/지역적 정보가 사라짐
     - 이미지에서 중요한 정보는 주변 픽셀들과의 관계에 있는데, 이 관계가 끊어짐.
   - 비효율적인 학습
     - 픽셀들을 한 줄로 늘이면 데이터의 크기가 매우 커짐.
@@ -463,8 +465,46 @@ model.compile(loss = 'mean_squared_error', optimizer = 'adam')
       - 다음 층에서는 이 단순 특징들을 조합해 '부리', '날개' 같은 `좀 더 복잡한 특징을 인식`
       - 마지막 층에서는 이 복잡한 특징들을 종합하여 `이 이미지는 새다`라고 최종적으로 판단
 
+---
+
+### CNN 원리
+#### Convolution Layer(합성곱)
+1. **Filter(= kernel, window)**
+   - 입력값 이미지의 모든 영역에 같은 필터를 반복 적용해 패턴을 찾아 처리하는 것이 목적
+     - Inner Product 연산 진행
+       - 벡터 공간에서 두 벡터를 받아 하나의 스칼라 값을 출력하는 연산
+     ![img.png](images/ch08/img_24.png)  
+     ![img.png](images/ch08/img_23.png)  
+     - fully vs locally
+       ![img.png](images/ch08/img_25.png)
+2. **Stride**
+   - 필터를 얼마나 움직일 것인가?
+     ![img.png](images/ch08/img_26.png)
+3. **Zero Padding**
+   - 4x4크기의 이미지에 필터처리를 해주었더니 결과값의 크기가 3x3로 줄음
+   - 제로패딩 처리
+     ![img.png](images/ch08/img_27.png)
+
+- 컬러이미지 합성곱 예시
+  ![img.png](images/ch08/img_30.png)
+
+#### Polling Layer
+- 데이터의 공간적 특성을 유지하며, 크기를 줄여주는 층
+  - 특정위치에서 큰 역할은 하는 특징(feature)을 추출
+  - 전체를 대변하는 특징(feature)을 추출
+- Polling
+  - Max Polling
+    ![img.png](images/ch08/img_28.png)
+  - Average Polling
+    ![img.png](images/ch08/img_29.png)
+
+#### Flatten Layer
+- 해당 레이어는 Convolution, Polling 레이어에서 feature 추출 후, Output 레이어에 연결하여 **어떤 이미지인지 분류 하기 위함**
+  ![img.png](images/ch08/img_31.png)
 
 
+
+https://yjjo.tistory.com/8
 https://mijeongban.medium.com/%EB%94%A5%EB%9F%AC%EB%8B%9D-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-cnn-convolutional-neural-networks-%EC%89%BD%EA%B2%8C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-836869f88375
 
 
