@@ -499,52 +499,12 @@ model.compile(loss = 'mean_squared_error', optimizer = 'adam')
     ![img.png](images/ch08/img_29.png)
 
 #### Flatten Layer
-- 해당 레이어는 Convolution, Polling 레이어에서 feature 추출 후, Output 레이어에 연결하여 **어떤 이미지인지 분류 하기 위함**
+- 해당 레이어는 Convolution, Polling 레이어에서 feature 추출 후, `Output 레이어에 연결`하여 **어떤 이미지인지 분류 하기 위함**
   ![img.png](images/ch08/img_31.png)
 
-
-
-https://yjjo.tistory.com/8
-https://mijeongban.medium.com/%EB%94%A5%EB%9F%AC%EB%8B%9D-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-cnn-convolutional-neural-networks-%EC%89%BD%EA%B2%8C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-836869f88375
-
-
-
-- 합성곱 신경망(**CNN**, Convolutional Neural Networks)
-  - **격자(grid) 형태**로 `구조화된 데이터를 처리하도록 설계`된 딥러닝 모델의 한 종류
-    - 이미지(2D), 비디오(3D), 시계열(1D)
-  - **이미지에 최적화**
-  - **CNN**은 입력 데이터에서 **계층적인 패턴**과 **특징을 학습하고 추출하는 데 강점**
-    - `이미지 인식`, `객체 탐지`, `이미지 분할` 등
-  - 입력 데이터를 `여러 레이어를 거치면서 특징을 추출`하고 `학습`하여 **객체 인식, 분류** 등에 활용
-
- 
-- **CNN**(Convolutional Neural Network) 구조는 크게 `세 가지 주요 구성 요소`
-  - 입력층(Input Layer)
-    - 특징(feature) 추출 담당
-  - 합성곱 층(Convolutional Layers)과 풀링 층(Pooling Layers)이 번갈아 배치된 부분
-    - 특징 맵을 다운샘플링하여 크기를 줄임
-  - 완전 연결 층(Fully Connected Layers)
-    - 풀링 후 평탄화(flatten)된 특징 벡터를 입력받아, 출력값을 예측
-
-#### 📈 시계열 예측에서 CNN의 적용
-- CNN는 **국소적인 패턴**(local pattern)과 **관련 특징**(feature)을 잘 추출하는 능력을 활용해 `시계열 예측에 사용`
-  - 일반 이미지 CNN과 달리 **시간 축**(temporal dimension)에서 **합성곱이 적용**
-
----
-
-1. 합성곱(Convolution) 과정
-   - 필터가 시계열 데이터의 연속된 구간에 대해 곱셈·덧셈 연산을 수행하며 이동(slide)합니다.
-   - 필터는 단기 추세, 계절성, 반복 패턴 등 예측에 유용한 시간적 특징을 학습합니다.
-   - 여러 개의 필터를 사용하면 다양한 시간 패턴을 동시에 포착할 수 있습니다.
-
-2. 풀링(Pooling)
-   - 합성곱 층 뒤에서 적용되어 특징 맵 크기를 줄이고, 중요한 정보만 유지합니다. 
-   - 계산량 감소, 과적합 방지, 모델의 일반화 성능 향상에 도움을 줍니다.
-
-3. 평탄화(Flatten) → 완전 연결 층 
-   - 특징 맵을 1차원 벡터로 변환 후 완전 연결 층으로 전달. 
-   - 완전 연결 층은 특징들의 조합을 학습하여 예측값을 산출합니다.
-
+#### 전체과정
+![img.png](images/ch08/img_32.png)  
+![img.png](images/ch08/img_33.png)  
 
 ### Summary
 - 딥러닝 알고리즘을 시계열 데이터에 적용하는 것은 여러 가지 **장점**과 **과제**
