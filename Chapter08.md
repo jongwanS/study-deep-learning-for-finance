@@ -472,20 +472,20 @@ model.compile(loss = 'mean_squared_error', optimizer = 'adam')
 1. **Filter(= kernel, window)**
    - 입력값 이미지의 모든 영역에 같은 필터를 반복 적용해 패턴을 찾아 처리하는 것이 목적
      - Inner Product 연산 진행
-       - 벡터 공간에서 두 벡터를 받아 하나의 스칼라 값을 출력하는 연산
+       - 벡터 공간에서 두 벡터를 받아 하나의 스칼라 값을 출력하는 연산  
      ![img.png](images/ch08/img_24.png)  
      ![img.png](images/ch08/img_23.png)  
-     - fully vs locally
+     - fully vs locally  
        ![img.png](images/ch08/img_25.png)
 2. **Stride**
-   - 필터를 얼마나 움직일 것인가?
+   - 필터를 얼마나 움직일 것인가?  
      ![img.png](images/ch08/img_26.png)
 3. **Zero Padding**
    - 4x4크기의 이미지에 필터처리를 해주었더니 결과값의 크기가 3x3로 줄음
-   - 제로패딩 처리
+   - 제로패딩 처리  
      ![img.png](images/ch08/img_27.png)
 
-- 컬러이미지 합성곱 예시
+- 컬러이미지 합성곱 예시  
   ![img.png](images/ch08/img_30.png)
 
 #### Polling Layer
@@ -493,16 +493,16 @@ model.compile(loss = 'mean_squared_error', optimizer = 'adam')
   - 특정위치에서 큰 역할은 하는 특징(feature)을 추출
   - 전체를 대변하는 특징(feature)을 추출
 - Polling
-  - Max Polling
+  - Max Polling  
     ![img.png](images/ch08/img_28.png)
-  - Average Polling
+  - Average Polling  
     ![img.png](images/ch08/img_29.png)
 
 #### Flatten Layer
-- 해당 레이어는 Convolution, Polling 레이어에서 feature 추출 후, `Output 레이어에 연결`하여 **어떤 이미지인지 분류 하기 위함**
+- 해당 레이어는 Convolution, Polling 레이어에서 feature 추출 후, `Output 레이어에 연결`하여 **어떤 이미지인지 분류 하기 위함**  
   ![img.png](images/ch08/img_31.png)
 
-#### 전체과정
+#### 전체과정  
 ![img.png](images/ch08/img_32.png)  
 ![img.png](images/ch08/img_33.png)  
 
@@ -536,4 +536,3 @@ model.compile(loss = 'mean_squared_error', optimizer = 'adam')
 
 
 https://hyewonleess.github.io/cnn/CNN-basic/
-http://taewan.kim/post/cnn/
