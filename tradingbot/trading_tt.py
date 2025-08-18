@@ -189,12 +189,12 @@ def strategy_signals(df):
 # Slack
 # ===============================
 def send_slack_message(text, webhook_url=None):
-    #url = webhook_url or os.getenv("SLACK_WEBHOOK")
-    url = "https://hooks.slack.com/services/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"
+    url = webhook_url or os.getenv("SLACK_WEBHOOK")
     if not url:
         raise RuntimeError("SLACK_WEBHOOK 환경변수를 설정하세요.")
     payload = {"text": text, "mrkdwn": True}
-    requests.post(url, data=json.dumps(payload), timeout=10)
+    response = requests.post(url, data=json.dumps(payload), timeout=10)
+    print(response.status_code, response.text)
 
 # ===============================
 # 실행 루프: 여러 심볼 + 인터벌 지정 + 한 번에 하나의 메시지

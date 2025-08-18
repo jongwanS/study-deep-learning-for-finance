@@ -31,10 +31,9 @@ def add_moving_averages(df):
 def send_slack_message(webhook_url, text):
     payload = {"text": text}
     requests.post(webhook_url, data=json.dumps(payload))
-# https://hooks.slack.com/services/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
 # 4. 실행 루프 (여러 심볼 + interval 지정 가능)
 def run_bot(symbols, interval="1d", sleep_seconds=60*60*24):
-    SLACK_WEBHOOK = "https://hooks.slack.com/services/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"  # 👉 본인 Webhook URL 넣기
+    SLACK_WEBHOOK = ""  # 👉 본인 Webhook URL 넣기
 
     while True:
         all_msgs = []  # 심볼별 메시지를 모아놓을 리스트
